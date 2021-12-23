@@ -11,6 +11,7 @@ using Serilog;
 using SmartFamily.Model;
 using SmartFamily.Model.Settings;
 using SmartFamily.Model.Settings.Json;
+using SmartFamily.ViewModels;
 using SmartFamily.Views;
 
 using System;
@@ -120,6 +121,7 @@ namespace SmartFamily
             // Sessions
 
             //Viewmodels
+            services.AddTransient<MainWindowViewModel>();
 
             return services.BuildServiceProvider();
         }
