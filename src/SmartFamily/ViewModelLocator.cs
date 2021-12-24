@@ -6,6 +6,8 @@ namespace SmartFamily
     {
         public static MainWindowViewModel MainWindow => GetViewModel<MainWindowViewModel>();
 
+        public static SettingsViewModel Settings => GetViewModel<SettingsViewModel>();
+
         private static T GetToolViewModel<T>() where T : ToolPaneViewModel
         {
             //return _container.GetInstance<T>();

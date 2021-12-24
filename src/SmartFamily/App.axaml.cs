@@ -121,6 +121,9 @@ namespace SmartFamily
             // Sessions
 
             //Viewmodels
+            services.AddTransient<StatusViewModel>();
+            services.AddTransient<SettingsViewModel>();
+
             services.AddTransient<MainWindowViewModel>();
 
             return services.BuildServiceProvider();

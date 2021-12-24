@@ -28,6 +28,9 @@
           <Separator />
           <MenuItem Header="E_xit" Command="{Binding ExitCommand}" HotKey="Alt+F" />
         </MenuItem>
+        <MenuItem Header="_Tools">
+          <MenuItem Header="_Options..." Command="{Binding OptionsCommand}" />
+        </MenuItem>
         <MenuItem Header="_Help">
           <MenuItem Header="_Smart Family GitHub project..." Click="BrowseSmartFamilyGithubMenuItem_OnClick" />
         </MenuItem>
@@ -52,5 +55,4 @@
       </DockPanel>
     </Border>
   </Grid>
-
 </Window>
