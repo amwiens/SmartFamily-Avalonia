@@ -1,24 +1,32 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:SmartFamily"
-             x:Class="SmartFamily.App">
-  <Application.Styles>
-    <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml" />
-
-    <StyleInclude Source="avares://SmartFamily/Resources/Themes/BaseDark.axaml" />
-    <StyleInclude Source="avares://SmartFamily/Resources/TablerIcons.axaml" />
-    <StyleInclude Source="avares://SmartFamily/Resources/LogoPlain.axaml" />
-
-    <Style Selector="TabItem">
-      <Setter Property="FontSize" Value="11" />
-      <Setter Property="Padding" Value="7,2,7,3" />
-      <Setter Property="VerticalAlignment" Value="Bottom" />
-    </Style>
-  </Application.Styles>
-
+             x:Class="SmartFamily.App"
+             xmlns:np="https://np.com/visuals"
+             xmlns:local="using:SmartFamily">
   <Application.Resources>
     <ResourceDictionary>
-      <local:ViewModelLocator x:Key="Locator" />
+      <ResourceDictionary.MergedDictionaries>
+        <np:ThemeLoader Name="ColorLoader"
+                        SelectedThemeId="Light"
+                        StyleResourceName="ColorLoaderStyles">
+          <np:ThemeInfo Id="Dark"
+                        ResourceUrl="/ColorDictionaries/DarkResources.axaml"
+                        StyleUrl="avares://Avalonia.Themes.Default/Accents/BaseDark.xaml" />
+          <np:ThemeInfo Id="Light"
+                        ResourceUrl="/ColorDictionaries/LightResources.axaml"
+                        StyleUrl="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml" />
+        </np:ThemeLoader>
+        <np:ThemeLoader Name="LanguageLoader"
+                        SelectedThemeId="English">
+          <np:ThemeInfo Id="English"
+                        ResourceUrl="/LanguageDictionaries/EnglishResources.axaml" />
+        </np:ThemeLoader>
+      </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Application.Resources>
+
+  <Application.Styles>
+    <np:StyleReference TheStyle="{StaticResource ColorLoaderStyles}" />
+    <StyleInclude Source="/Resources/AppStyles.axaml" />
+  </Application.Styles>
 </Application>
