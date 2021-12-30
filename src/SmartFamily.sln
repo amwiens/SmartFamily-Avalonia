@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartFamily", "SmartFamily\SmartFamily.csproj", "{60801249-12DB-4ED1-9A5B-D7E727517787}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartFamily.Shell", "SmartFamily.Shell\SmartFamily.Shell.csproj", "{972F16C8-812F-4855-B49F-5B5F97D9778E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartFamily.Shell.Extensibility", "SmartFamily.Shell.Extensibility\SmartFamily.Shell.Extensibility.csproj", "{5A3E2EC2-C317-4E68-903E-E8871FDE6326}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{60801249-12DB-4ED1-9A5B-D7E727517787}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60801249-12DB-4ED1-9A5B-D7E727517787}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60801249-12DB-4ED1-9A5B-D7E727517787}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972F16C8-812F-4855-B49F-5B5F97D9778E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972F16C8-812F-4855-B49F-5B5F97D9778E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972F16C8-812F-4855-B49F-5B5F97D9778E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972F16C8-812F-4855-B49F-5B5F97D9778E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A3E2EC2-C317-4E68-903E-E8871FDE6326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A3E2EC2-C317-4E68-903E-E8871FDE6326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A3E2EC2-C317-4E68-903E-E8871FDE6326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A3E2EC2-C317-4E68-903E-E8871FDE6326}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

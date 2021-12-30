@@ -14,10 +14,6 @@ namespace SmartFamily
 {
     public partial class MainWindow : Window
     {
-        private ThemeLoader? _languageThemeLoader;
-        private ThemeLoader? _colorThemeLoader;
-
-        private Data _data = new Data("FirstDataTemplateText");
 
         public MainWindow()
         {
