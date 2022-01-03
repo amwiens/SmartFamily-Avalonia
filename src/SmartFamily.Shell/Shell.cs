@@ -2,6 +2,8 @@
 using Avalonia.Controls;
 using Avalonia.ReactiveUI;
 
+using Dock.Model.Core;
+
 using SmartFamily.Extensibility;
 using SmartFamily.Shell.Extensibility.Platforms;
 
