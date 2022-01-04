@@ -11,9 +11,12 @@ namespace SmartFamily
 
         [JsonProperty(Required = Required.Always)]
         public string Name { get; set; }
+
         [JsonProperty(Required = Required.Always)]
         public Version Version { get; set; }
+
         public string Description { get; set; }
+
         public string Icon
         {
             get => File.Exists(_icon) ? _icon : DefaultIcon;

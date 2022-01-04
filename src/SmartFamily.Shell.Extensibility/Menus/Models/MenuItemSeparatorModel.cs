@@ -11,7 +11,6 @@ namespace SmartFamily.Menus.Models
         public MenuItemSeparatorModel()
             : base(EmptyItem, null)
         {
-
         }
 
         private class EmptyMenuItem : IMenuItem

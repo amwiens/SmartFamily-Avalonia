@@ -1,7 +1,7 @@
 ﻿using Avalonia.Input;
 
-using Dock.Model.Controls;
 using Dock.Model;
+using Dock.Model.Controls;
 
 using ReactiveUI;
 

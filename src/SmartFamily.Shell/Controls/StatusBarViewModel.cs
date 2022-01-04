@@ -162,7 +162,6 @@ namespace SmartFamily.Shell.Controls
 
         public void ClearTextPosition()
         {
-
         }
     }
 }

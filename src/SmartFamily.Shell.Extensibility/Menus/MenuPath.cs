@@ -38,12 +38,15 @@ namespace SmartFamily.Menus
             || _path.SequenceEqual(other._path, StringComparer.OrdinalIgnoreCase);
 
         public override bool Equals(object? obj) => obj is MenuPath menuPath && Equals(menuPath);
+
         public override int GetHashCode() => _path.Count == 0 ? 0 : _path[_path.Count - 1].GetHashCode();
 
         public IEnumerator<string> GetEnumerator() => _path.GetEnumerator();
+
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         public static bool operator ==(MenuPath a, MenuPath b) => Equals(a, b);
+
         public static bool operator !=(MenuPath a, MenuPath b) => !(a == b);
     }
 }
