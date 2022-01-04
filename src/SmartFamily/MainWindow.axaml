@@ -2,14 +2,21 @@
                   xmlns="https://github.com/avaloniaui"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:cont="clr-namespace:SmartFamily.Shell.Controls;assembly=SmartFamily.Shell"
-                  xmlns:local="clr-namespace:SmartFamily"
+                  xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+                  xmlns:beh="clr-namespace:SmartFamily.Utils.Behaviors;assembly=SmartFamily.Utils"
+                  xmlns:menu="clr-namespace:SmartFamily.Shell.Extensibility.MainMenu.Views;assembly=SmartFamily.Shell.Extensibility"
                   Title="Smart Family"
-                  TransparencyLevelHint="Transparent"
-                  SystemDecorations="None"
-                  Background="Transparent"
-                  Foreground="{DynamicResource ForegroundBrush}"
-                  x:Name="Root"
-                  Width="{DynamicResource WindowWidth}"
-                  Height="{DynamicResource WindowHeight}"
-                  WindowState="Maximized">
+                  FontFamily="{DynamicResource UiFont}" FontSize="14"
+                  Foreground="{DynamicResource ThemeForegroundBrush}" WindowState="Maximized">
+  <cont:MetroWindow.TitleBarContent>
+    <menu:MainMenuView DataContext="{Binding Shell.MainMenu}" Margin="4 0 0 0" Foreground="{DynamicResource ThemeForegroundBrush}" VerticalAlignment="Stretch" FontSize="13" />
+  </cont:MetroWindow.TitleBarContent>
+
+  <i:Interaction.Behaviors>
+    <beh:OpenCloseWindowBehavior DataContext="{Binding ModalDialog}" WindowType="{x:Type cont:ModalDialog}" IsOpen="{Binding ModalDialog.IsVisible}" />
+  </i:Interaction.Behaviors>
+
+  <Grid RowDefinitions="*,25">
+    <TextBlock Text="Testing" />
+  </Grid>
 </cont:MetroWindow>

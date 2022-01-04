@@ -3,4 +3,15 @@
              x:Class="SmartFamily.App"
              xmlns:np="https://np.com/visuals"
              xmlns:local="using:SmartFamily">
+  <Application.Styles>
+    <StyleInclude Source="resm:Avalonia.Themes.Default.DefaultTheme.xaml?assembly=Avalonia.Themes.Default"/>
+    <StyleInclude Source="avares://SmartFamily.Shell/Themes/BaseDark.axaml"/>
+    <StyleInclude Source="avares://SmartFamily.Shell/Themes/Accents/DarkAccent.axaml"/>
+    <StyleInclude Source="avares://SmartFamily.Shell/Icons/Icons.axaml"/>
+    <StyleInclude Source="avares://SmartFamily.Shell/Controls/MetroWindowTheme.axaml" />
+    <!--<StyleInclude Source="avares://SmartFamily.Shell.Extensibility/Controls/ControlTheme.paml" />-->
+    <!--<StyleInclude Source="avares://SmartFamily.Shell/Styles/GlobalStyles.xaml" />-->
+    <!--<StyleInclude Source="avares://Dock.Avalonia.Themes.Default/DefaultTheme.xaml"/>-->
+    <!--<StyleInclude Source="avares://Dock.Avalonia.Themes.Metro/DefaultTheme.xaml"/>-->
+  </Application.Styles>
 </Application>

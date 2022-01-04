@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.11" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.11.5" />
+    <PackageReference Include="Avalonia.Xaml.Interactions" Version="0.10.11.5" />
+    <PackageReference Include="Avalonia.Xaml.Interactions.Custom" Version="0.10.3" />
+  </ItemGroup>
+
+</Project>

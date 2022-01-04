@@ -10,5 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\SmartFamily.Shell.Extensibility\SmartFamily.Shell.Extensibility.csproj" />
     <ProjectReference Include="..\SmartFamily.Shell\SmartFamily.Shell.csproj" />
+    <ProjectReference Include="..\SmartFamily.Utils\SmartFamily.Utils.csproj" />
   </ItemGroup>
 </Project>
