@@ -1,14 +1,10 @@
-﻿using Dock.Model.Controls;
-using Dock.Model.Core;
-using Dock.Model.ReactiveUI;
-using Dock.Model.ReactiveUI.Controls;
+﻿using Dock.Avalonia.Controls;
+using Dock.Model.Controls;
+using Dock.Model;
 
-using System;
-using System.Collections.Generic;
+using ReactiveUI;
+
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmartFamily.Docking
 {
@@ -73,7 +69,99 @@ namespace SmartFamily.Docking
                 }
             };
 
+            var mainLayout = new RootDock
+            {
+                Id = "Perspective",
+                Title = "Perspective",
+                ActiveDockable = horizontalContainer,
+                VisibleDockables = new ObservableCollection<IDockable>
+                {
+                    horizontalContainer
+                }
+            };
 
+            Root = new RootDock
+            {
+                Id = "Root",
+                Title = "Root",
+                ActiveDockable = mainLayout,
+                VisibleDockables = new ObservableCollection<IDockable>
+                {
+                    mainLayout
+                }
+            };
+
+            Root.WhenAnyValue(x => x.VisibleDockables)
+                .Subscribe(x =>
+                {
+                });
+
+            (Root.VisibleDockables as ObservableCollection<IDockable>).CollectionChanged += DefaultLayoutFactory_CollectionChanged;
+
+            return Root;
+        }
+
+        private void DefaultLayoutFactory_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+        }
+
+        public override void UpdateDockable(IDockable view, IDockable? parent)
+        {
+            view.Owner = parent;
+
+            if (view is IDock dock)
+            {
+                dock.Factory = this;
+
+                if (dock.VisibleDockables != null)
+                {
+                    foreach (var child in dock.VisibleDockables)
+                    {
+                        UpdateDockable(child, view);
+                    }
+                }
+            }
+
+            if (view is IRootDock rootDock)
+            {
+                if (rootDock.Windows != null)
+                {
+                    foreach (var child in rootDock.Windows)
+                    {
+                        UpdateDockWindow(child, view);
+                    }
+                }
+            }
+        }
+
+        /// <inheritdoc/>
+        public override void InitLayout(IDockable layout)
+        {
+            this.HostWindowLocator = new Dictionary<string, Func<IHostWindow>>
+            {
+                [nameof(IDockWindow)] = () => new HostWindow()
+            };
+
+            this.DockableLocator = new Dictionary<string, Func<IDockable>>
+            {
+                //[nameof(DebugCenterPane)] = () => DebugCenterPane,
+                //[nameof(MainCenterPane)] = () => MainCenterPane,
+            };
+
+            this.UpdateDockable(layout, null);
+
+            if (layout is IRootDock layoutWindowsHost)
+            {
+                layoutWindowsHost.ShowWindows();
+                if (layout is IDock layoutViewsHost)
+                {
+                    layoutViewsHost.ActiveDockable = layoutViewsHost.DefaultDockable;
+                    if (layoutViewsHost.ActiveDockable is IRootDock currentviewWindowsHost)
+                    {
+                        currentviewWindowsHost.ShowWindows();
+                    }
+                }
+            }
         }
     }
 }

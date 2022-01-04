@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 
 using Dock.Model.Controls;
-using Dock.Model.Core;
+using Dock.Model;
 
 using SmartFamily.Documents;
 using SmartFamily.Extensibility.Dialogs;

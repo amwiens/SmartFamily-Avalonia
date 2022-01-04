@@ -3,30 +3,4 @@
              x:Class="SmartFamily.App"
              xmlns:np="https://np.com/visuals"
              xmlns:local="using:SmartFamily">
-  <Application.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <np:ThemeLoader Name="ColorLoader"
-                        SelectedThemeId="Light"
-                        StyleResourceName="ColorLoaderStyles">
-          <np:ThemeInfo Id="Dark"
-                        ResourceUrl="/ColorDictionaries/DarkResources.axaml"
-                        StyleUrl="avares://Avalonia.Themes.Default/Accents/BaseDark.xaml" />
-          <np:ThemeInfo Id="Light"
-                        ResourceUrl="/ColorDictionaries/LightResources.axaml"
-                        StyleUrl="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml" />
-        </np:ThemeLoader>
-        <np:ThemeLoader Name="LanguageLoader"
-                        SelectedThemeId="English">
-          <np:ThemeInfo Id="English"
-                        ResourceUrl="/LanguageDictionaries/EnglishResources.axaml" />
-        </np:ThemeLoader>
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </Application.Resources>
-
-  <Application.Styles>
-    <np:StyleReference TheStyle="{StaticResource ColorLoaderStyles}" />
-    <StyleInclude Source="/Resources/AppStyles.axaml" />
-  </Application.Styles>
 </Application>

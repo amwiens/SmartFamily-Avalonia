@@ -1,5 +1,5 @@
 ﻿using Dock.Model.Controls;
-using Dock.Model.Core;
+using Dock.Model;
 
 using ReactiveUI;
 
@@ -8,9 +8,9 @@ using SmartFamily.MVVM;
 
 namespace SmartFamily.Shell
 {
-    abstract class SmartFamilyTab<T> : ViewModel, IDockable where T : IDockableViewModel
+    internal abstract class SmartFamilyTab<T> : ViewModel, IDockable where T : IDockableViewModel
     {
-        T _model;
+        private T _model;
 
         public SmartFamilyTab(T model)
         {
@@ -55,7 +55,6 @@ namespace SmartFamily.Shell
 
         public void OnSelected()
         {
-
         }
 
         public IDockable Clone()
@@ -64,19 +63,17 @@ namespace SmartFamily.Shell
         }
     }
 
-    class SmartFamilyDocumentTab : SmartFamilyTab<IDocumentTabViewModel>, IDocument
+    internal class SmartFamilyDocumentTab : SmartFamilyTab<IDocumentTabViewModel>, IDocument
     {
         public SmartFamilyDocumentTab(IDocumentTabViewModel model) : base(model)
         {
-
         }
     }
 
-    class SmartFamilyToolTab : SmartFamilyTab<IToolViewModel>, ITool
+    internal class SmartFamilyToolTab : SmartFamilyTab<IToolViewModel>, ITool
     {
         public SmartFamilyToolTab(IToolViewModel model) : base(model)
         {
-
         }
     }
 

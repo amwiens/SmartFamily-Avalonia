@@ -1,18 +1,14 @@
-using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+
+using SmartFamily.Shell.Controls;
 
 namespace SmartFamily
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
-
         public MainWindow()
         {
             InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
         }
 
         private void InitializeComponent()

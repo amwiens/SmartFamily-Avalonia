@@ -3,6 +3,8 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 
+using SmartFamily.Extensibility.Theme;
+using SmartFamily.GlobalSettings;
 using SmartFamily.Shell;
 
 using System;

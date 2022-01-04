@@ -1,5 +1,5 @@
-﻿using Dock.Model.Core;
-using Dock.Model.ReactiveUI.Controls;
+﻿using Dock.Model;
+using Dock.Model.Controls;
 
 using SmartFamily.Shell;
 

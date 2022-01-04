@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.10.11" />
     <PackageReference Include="Avalonia.Xaml.Interactivity" Version="0.10.11.5" />
-    <PackageReference Include="Dock.Avalonia" Version="0.10.11" />
+    <PackageReference Include="Dock.Avalonia" Version="0.10.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="ReactiveUI" Version="17.1.17" />

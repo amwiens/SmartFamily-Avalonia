@@ -1,5 +1,5 @@
 ﻿using Dock.Model.Controls;
-using Dock.Model.Core;
+using Dock.Model;
 
 using SmartFamily.MVVM;
 

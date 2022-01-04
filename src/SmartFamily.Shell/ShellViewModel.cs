@@ -1,7 +1,7 @@
 ﻿using Avalonia.Input;
 
 using Dock.Model.Controls;
-using Dock.Model.Core;
+using Dock.Model;
 
 using ReactiveUI;
 
@@ -314,7 +314,7 @@ namespace SmartFamily.Shell
             GC.Collect();
         }
 
-        public  ModalDialogViewModelBase ModalDialog
+        public ModalDialogViewModelBase ModalDialog
         {
             get { return modalDialog; }
             set { this.RaiseAndSetIfChanged(ref modalDialog, value); }
