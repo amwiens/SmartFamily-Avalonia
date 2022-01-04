@@ -6,18 +6,20 @@ using Dock.Model.Core;
 using ReactiveUI;
 
 using SmartFamily.Commands;
+using SmartFamily.Docking;
 using SmartFamily.Documents;
 using SmartFamily.Extensibility;
 using SmartFamily.Extensibility.Dialogs;
+using SmartFamily.Extensibility.Shell;
+using SmartFamily.MainMenu;
+using SmartFamily.Menus.ViewModels;
 using SmartFamily.MVVM;
+using SmartFamily.Shell.Controls;
 using SmartFamily.Shell.Extensibility.Platforms;
+using SmartFamily.Toolbars;
+using SmartFamily.Toolbars.ViewModels;
 
-using System;
-using System.Collections.Generic;
 using System.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmartFamily.Shell
 {
@@ -246,5 +248,185 @@ namespace SmartFamily.Shell
 
             return result;
         }
+
+        public IPerspective CreatePerspective()
+        {
+            var currentLayout = Root.ActiveDockable as IRootDock;
+            var root = CreatePerspective(currentLayout);
+
+            var result = new SmartFamilyPerspective(root);
+
+            _perspectives.Add(result);
+
+            return result;
+        }
+
+        public IPerspective CurrentPerspective
+        {
+            get => _currentPerspective;
+            set => this.RaiseAndSetIfChanged(ref _currentPerspective, value);
+        }
+
+        private IDock _documentDock;
+
+        public void AddDocument(IDocumentTabViewModel document, bool temporary = false, bool select = true)
+        {
+            if (!_documents.Contains(document))
+            {
+                _documents.Add(document);
+
+                var view = _documentDock.Dock(document, true);
+
+                _documentViews.Add(document, view);
+            }
+
+            if (select && _documentViews.ContainsKey(document))
+            {
+                Factory.SetActiveDockable(_documentViews[document]);
+
+                document.OnOpen();
+
+                SelectedDocument = document;
+            }
+        }
+
+        public void RemoveDocument(IDocumentTabViewModel document)
+        {
+            if (document == null)
+            {
+                return;
+            }
+
+            if (_documentViews[document].Owner is IDock dock)
+            {
+                dock.VisibleDockables.Remove(_documentViews[document]);
+                dock.Factory.UpdateDockable(_documentViews[document], dock);
+            }
+
+            _documentViews.Remove(document);
+            _documents.Remove(document);
+
+            if (SelectedDocument == document)
+            {
+                SelectedDocument = null;
+            }
+
+            GC.Collect();
+        }
+
+        public  ModalDialogViewModelBase ModalDialog
+        {
+            get { return modalDialog; }
+            set { this.RaiseAndSetIfChanged(ref modalDialog, value); }
+        }
+
+        public IDocumentTabViewModel SelectedDocument
+        {
+            get => _selectedDocument;
+            set
+            {
+                (_selectedDocument as IDocumentTabViewModel)?.OnDeselected();
+
+                if (value != null && _documentViews.ContainsKey(value))
+                {
+                    foreach (var perspective in _perspectives)
+                    {
+                        if (_documentViews[value].Owner is IDock dock)
+                        {
+                            if (dock.VisibleDockables.Contains(_documentViews[value]))
+                            {
+                                dock.ActiveDockable = _documentViews[value];
+                            }
+                        }
+                    }
+                }
+
+                _selectedDocument = value;
+
+                _selectedDocument?.OnSelected();
+
+                this.RaisePropertyChanged(nameof(SelectedDocument));
+            }
+        }
+
+        public void Select(object view)
+        {
+            if (view is IDocumentTabViewModel doc)
+            {
+                SelectedDocument = doc;
+            }
+            else if (view is IToolViewModel tool)
+            {
+                CurrentPerspective.SelectedTool = tool;
+            }
+        }
+
+        public void AddOrSelectDocument<T>(T document) where T : IDocumentTabViewModel
+        {
+            IDocumentTabViewModel doc = Documents.FirstOrDefault(x => x.Equals(document));
+
+            if (doc != null)
+            {
+                SelectedDocument = doc;
+            }
+            else
+            {
+                AddDocument(document);
+            }
+        }
+
+        public void AddOrSelectDocument<T>(Func<T> factory) where T : IDocumentTabViewModel
+        {
+            IDocumentTabViewModel doc = Documents.FirstOrDefault(x => x is T);
+
+            if (doc != default)
+            {
+                SelectedDocument = doc;
+            }
+            else
+            {
+                AddDocument(factory());
+            }
+        }
+
+        public T GetOrCreate<T>() where T : IDocumentTabViewModel, new()
+        {
+            T document = default;
+
+            IDocumentTabViewModel doc = Documents.FirstOrDefault(x => x is T);
+
+            if (doc != default)
+            {
+                document = (T)doc;
+                SelectedDocument = doc;
+            }
+            else
+            {
+                document = new T();
+                AddDocument(document);
+            }
+            return document;
+        }
+
+        public IDocumentTabViewModel GetOrCreate(Type type, Func<IDocumentTabViewModel> create)
+        {
+            IDocumentTabViewModel document = default;
+
+            IDocumentTabViewModel doc = Documents.FirstOrDefault(x => x.GetType().IsAssignableFrom(type));
+
+            if (doc != default)
+            {
+                document = doc;
+                SelectedDocument = doc;
+            }
+            else
+            {
+                document = create();
+                AddDocument(document);
+            }
+            return document;
+        }
+
+        public Avalonia.Controls.IPanel Overlay { get; internal set; }
     }
 }
