@@ -12,7 +12,7 @@ namespace SmartFamily.Extensibility.Converters
     {
         public static NativeMenuConverter Instance = new NativeMenuConverter();
 
-        private IList<NativeMenuItemBase> GetNativeItems (IEnumerable<MenuItemModel> items, NativeMenu menu = null)
+        private IList<NativeMenuItemBase> GetNativeItems(IEnumerable<MenuItemModel> items, NativeMenu menu = null)
         {
             var result = new List<NativeMenuItemBase>();
 

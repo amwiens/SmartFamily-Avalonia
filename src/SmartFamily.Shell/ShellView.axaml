@@ -21,12 +21,52 @@
     </Style>
 
     <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+      <Setter Property="Background" Value="{DynamicResource ApplicationAccentBrushLow}" />
+    </Style>
 
+    <Style Selector="DropDownItem:selected /template/ ContentPresenter">
+      <Setter Property="Background" Value="{DynamicResource ApplicationAccentBrushLow}" />
+    </Style>
+
+    <Style Selector="DropDownItem:pointerover /template/ ContentPresenter">
+      <Setter Property="Background" Value="{DynamicResource ApplicationAccentBrushLow}" />
+    </Style>
+
+    <Style Selector="DropDownItem:selected">
+      <Setter Property="Foreground" Value="{DynamicResource ApplicationAccentForegroundBrush}" />
+    </Style>
+
+    <Style Selector="DropDownItem:pointerover">
+      <Setter Property="Foreground" Value="{DynamicResource ApplicationAccentForegroundBrush}" />
+    </Style>
+
+    <!-- GridSplitter.vertical -->
+    <Style Selector="GridSplitter:vertical">
+      <Setter Property="Width" Value="6" />
+      <Setter Property="Background" Value="#00FFFFFF" />
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Border Background="{TemplateBinding Background}" />
+        </ControlTemplate>
+      </Setter>
+    </Style>
+
+    <!-- GridSplitter.horizontal -->
+    <Style Selector="GridSplitter:horizontal">
+      <Setter Property="Height" Value="6" />
+      <Setter Property="Background" Value="#00FFFFFF" />
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Border Background="{TemplateBinding Background}" BorderThickness="1" />
+        </ControlTemplate>
+      </Setter>
     </Style>
   </UserControl.Styles>
+
   <UserControl.KeyBindings>
     <KeyBinding Command="{Binding EnableDebugModeCommand}" Gesture="CTRL+SHIFT+D" />
   </UserControl.KeyBindings>
+
   <Grid RowDefinitions="Auto,*" id:DockProperties.IsDropArea="True">
     <Grid Margin="0">
       <cont:ToolBar DataContext="{Binding StandardToolbar}" Grid.Row="1" Margin="7 0 4 4" IsVisible="{Binding !!StandardToolbar}" />

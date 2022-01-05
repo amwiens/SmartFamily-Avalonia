@@ -17,6 +17,66 @@
     <beh:OpenCloseWindowBehavior DataContext="{Binding ModalDialog}" WindowType="{x:Type cont:ModalDialog}" IsOpen="{Binding ModalDialog.IsVisible}" />
   </i:Interaction.Behaviors>
 
+  <cont:MetroWindow.Styles>
+    <Style Selector="ListBoxItem:selected">
+      <Setter Property="Foreground" Value="{DynamicResource ApplicationAccentForegroundBrush}" />
+    </Style>
+
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+      <Setter Property="Background" Value="{DynamicResource ApplicationAccentBrushLow}" />
+    </Style>
+
+    <Style Selector="TreeViewItem:selected /template/ ContentPresenter#PART_HeaderPresenter">
+      <Setter Property="Background" Value="{DynamicResource ApplicationAccentBrushLow}" />
+    </Style>
+
+    <Style Selector="TreeViewItem:selected /template/ ContentPresenter#PART_HeaderPresenter">
+      <Setter Property="TextBlock.Foreground" Value="{DynamicResource ApplicationAccentForegroundBrush}" />
+    </Style>
+
+    <Style Selector="DropDownItem:selected /template/ ContentPresenter">
+      <Setter Property="Background" Value="{DynamicResource ApplicationAccentBrushLow}" />
+    </Style>
+
+    <Style Selector="DropDownItem:pointerover /template/ ContentPresenter">
+      <Setter Property="Background" Value="{DynamicResource ApplicationAccentBrushLow}" />
+    </Style>
+
+    <Style Selector="DropDownItem:selected">
+      <Setter Property="Foreground" Value="{DynamicResource ApplicationAccentForegroundBrush}" />
+    </Style>
+
+    <Style Selector="DropDownItem:pointerover">
+      <Setter Property="Foreground" Value="{DynamicResource ApplicationAccentForegroundBrush}" />
+    </Style>
+
+    <!-- GridSplitter.vertical -->
+    <Style Selector="GridSplitter:vertical">
+      <Setter Property="Width" Value="6" />
+      <Setter Property="Background" Value="#00FFFFFF" />
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Border Background="{TemplateBinding Background}" />
+        </ControlTemplate>
+      </Setter>
+    </Style>
+
+    <!-- GridSplitter.horizontal -->
+    <Style Selector="GridSplitter:horizontal">
+      <Setter Property="Height" Value="6" />
+      <Setter Property="Background" Value="#00FFFFFF" />
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Border Background="{TemplateBinding Background}" BorderThickness="1" />
+        </ControlTemplate>
+      </Setter>
+    </Style>
+  </cont:MetroWindow.Styles>
+
+  <cont:MetroWindow.KeyBindings>
+    <KeyBinding Command="{Binding EnableDebugModeCommand}" Gesture="CTRL+SHIFT+D" />
+  </cont:MetroWindow.KeyBindings>
+
   <Grid RowDefinitions="*,25">
     <shell:ShellView DataContext="{Binding Shell}" />
 
