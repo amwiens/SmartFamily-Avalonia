@@ -1,0 +1,12 @@
+<UserControl x:Class="SmartFamily.Shell.MenuShellView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:menu="clr-namespace:SmartFamily.Shell.Extensibility.MainMenu.Views;assembly=SmartFamily.Shell.Extensibility"
+             xmlns:local="clr-namespace:SmartFamily.Shell;assembly=SmartFamily.Shell"
+             FontFamily="{DynamicResource UiFont}" FontSize="14"
+             Foreground="{DynamicResource ThemeForegroundBrush}">
+  <DockPanel>
+    <menu:MainMenuView DockPanel.Dock="Top" DataContext="{Binding MainMenu}" Margin="10 4 0 0" Foreground="{DynamicResource ThemeForegroundBrush}" />
+    <local:ShellView />
+  </DockPanel>
+</UserControl>
