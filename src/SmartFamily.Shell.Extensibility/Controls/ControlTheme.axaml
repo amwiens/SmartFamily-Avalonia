@@ -1,0 +1,6 @@
+﻿<Styles xmlns="https://github.com/avaloniaui">
+  <StyleInclude Source="avares://SmartFamily.Shell.Extensibility/Controls/DocumentTabControl.axaml" />
+  <StyleInclude Source="avares://SmartFamily.Shell.Extensibility/Controls/DocumentTabItem.axaml" />
+  <StyleInclude Source="avares://SmartFamily.Shell.Extensibility/Controls/ViewModelViewHost.axaml" />
+  <StyleInclude Source="avares://SmartFamily.Shell.Extensibility/Controls/EditableTextBlock.axaml" />
+</Styles>

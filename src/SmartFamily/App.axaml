@@ -4,14 +4,14 @@
              xmlns:np="https://np.com/visuals"
              xmlns:local="using:SmartFamily">
   <Application.Styles>
-    <StyleInclude Source="resm:Avalonia.Themes.Default.DefaultTheme.xaml?assembly=Avalonia.Themes.Default" />
-    <StyleInclude Source="avares://SmartFamily.Shell/Themes/BaseDark.axaml" />
-    <StyleInclude Source="avares://SmartFamily.Shell/Themes/Accents/DarkAccent.axaml" />
-    <StyleInclude Source="avares://SmartFamily.Shell/Icons/Icons.axaml" />
+    <StyleInclude Source="resm:Avalonia.Themes.Default.DefaultTheme.xaml?assembly=Avalonia.Themes.Default"/>
+    <StyleInclude Source="avares://SmartFamily.Shell/Themes/BaseDark.axaml"/>
+    <StyleInclude Source="avares://SmartFamily.Shell/Themes/Accents/DarkAccent.axaml"/>
+    <StyleInclude Source="avares://SmartFamily.Shell/Icons/Icons.axaml"/>
     <StyleInclude Source="avares://SmartFamily.Shell/Controls/MetroWindowTheme.axaml" />
-    <!--<StyleInclude Source="avares://SmartFamily.Shell.Extensibility/Controls/ControlTheme.paml" />-->
+    <StyleInclude Source="avares://SmartFamily.Shell.Extensibility/Controls/ControlTheme.axaml" />
     <StyleInclude Source="avares://SmartFamily.Shell/Styles/GlobalStyles.axaml" />
-    <!--<StyleInclude Source="avares://Dock.Avalonia.Themes.Default/DefaultTheme.xaml" />-->
-    <!--<StyleInclude Source="avares://Dock.Avalonia.Themes.Metro/DefaultTheme.xaml" />-->
+    <!--<StyleInclude Source="avares://Dock.Avalonia.Themes.Default/DefaultTheme.xaml"/>-->
+    <!--<StyleInclude Source="avares://Dock.Avalonia.Themes.Metro/DefaultTheme.xaml"/>-->
   </Application.Styles>
 </Application>
