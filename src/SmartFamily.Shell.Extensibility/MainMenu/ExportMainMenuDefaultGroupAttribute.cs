@@ -6,7 +6,7 @@ namespace SmartFamily.MainMenu
 {
     [MetadataAttribute]
     [AttributeUsage(AttributeTargets.Property)]
-    internal class ExportMainMenuDefaultGroupAttribute : ExportAttribute
+    public class ExportMainMenuDefaultGroupAttribute : ExportAttribute
     {
         public MenuPath Path { get; }
 

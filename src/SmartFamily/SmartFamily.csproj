@@ -6,6 +6,14 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove=".gitignore" />
+    <None Remove="Assets\logo-256.png" />
+    <None Remove="Assets\logo-65.png" />
+    <None Remove="Assets\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\logo-256.png" />
+    <AvaloniaResource Include="Assets\logo-65.png" />
+    <AvaloniaResource Include="Assets\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartFamily.Shell.Extensibility\SmartFamily.Shell.Extensibility.csproj" />

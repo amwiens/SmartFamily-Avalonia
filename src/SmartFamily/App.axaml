@@ -1,17 +1,39 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="SmartFamily.App"
-             xmlns:np="https://np.com/visuals"
-             xmlns:local="using:SmartFamily">
+             xmlns:id="clr-namespace:Dock.Model;assembly=Dock.Model"
+             xmlns:cont="clr-namespace:SmartFamily.Controls;assembly=SmartFamily.Shell.Extensibility"
+             xmlns:Views="clr-namespace:SmartFamily.ViewModels.Views;assembly=SmartFamily.Shell"
+             x:Class="SmartFamily.App">
   <Application.Styles>
-    <StyleInclude Source="resm:Avalonia.Themes.Default.DefaultTheme.xaml?assembly=Avalonia.Themes.Default"/>
-    <StyleInclude Source="avares://SmartFamily.Shell/Themes/BaseDark.axaml"/>
-    <StyleInclude Source="avares://SmartFamily.Shell/Themes/Accents/DarkAccent.axaml"/>
-    <StyleInclude Source="avares://SmartFamily.Shell/Icons/Icons.axaml"/>
+    <StyleInclude Source="resm:Avalonia.Themes.Default.DefaultTheme.xaml?assembly=Avalonia.Themes.Default" />
+    <StyleInclude Source="avares://SmartFamily.Shell/Themes/BaseDark.axaml" />
+    <StyleInclude Source="avares://SmartFamily.Shell/Themes/Accents/DarkAccent.axaml" />
+    <StyleInclude Source="avares://SmartFamily.Shell/Icons/Icons.axaml" />
     <StyleInclude Source="avares://SmartFamily.Shell/Controls/MetroWindowTheme.axaml" />
     <StyleInclude Source="avares://SmartFamily.Shell.Extensibility/Controls/ControlTheme.axaml" />
     <StyleInclude Source="avares://SmartFamily.Shell/Styles/GlobalStyles.axaml" />
-    <!--<StyleInclude Source="avares://Dock.Avalonia.Themes.Default/DefaultTheme.xaml"/>-->
-    <!--<StyleInclude Source="avares://Dock.Avalonia.Themes.Metro/DefaultTheme.xaml"/>-->
+    <!--<StyleInclude Source="avares://Dock.Avalonia.Themes.Default/DefaultTheme.xaml" />-->
+    <!--<StyleInclude Source="avares://Dock.Avalonia.Themes.Metro/DefaultTheme.xaml" />-->
   </Application.Styles>
+  <Application.DataTemplates>
+    <!-- Views -->
+    <DataTemplate DataType="Views:HomeView">
+      <Grid>
+        <StackPanel>
+          <TextBlock Text="{Binding Id}" />
+          <TextBlock Text="{Binding Title}" />
+          <TextBlock Text="{Binding Context}" />
+          <Button Content="Main" Command="{Binding Context.Navigate}" CommandParameter="Main" />
+        </StackPanel>
+      </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="Views:MainView">
+      <Grid>
+        <ContentControl Content="{Binding CurrentView}" />
+      </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="id:IDockable">
+      <cont:ViewModelViewHost DataContext="{Binding Context}" />
+    </DataTemplate>
+  </Application.DataTemplates>
 </Application>

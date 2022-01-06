@@ -16,7 +16,7 @@ namespace SmartFamily
         [STAThread]
         private static void Main(string[] args)
         {
-            BuildAvaloniaApp().StartShellApp("ShellExampleApp", AppMain, args);
+            BuildAvaloniaApp().StartShellApp("SmartFamilyApp", AppMain, args);
         }
 
         private static void AppMain(string[] args)

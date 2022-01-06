@@ -6,6 +6,7 @@
                   xmlns:shell="clr-namespace:SmartFamily.Shell;assembly=SmartFamily.Shell"
                   xmlns:beh="clr-namespace:SmartFamily.Utils.Behaviors;assembly=SmartFamily.Utils"
                   xmlns:menu="clr-namespace:SmartFamily.Shell.Extensibility.MainMenu.Views;assembly=SmartFamily.Shell.Extensibility"
+                  Icon="avares://SmartFamily.Shell/Assets/logo-256.png"
                   Title="Smart Family"
                   FontFamily="{DynamicResource UiFont}" FontSize="14"
                   Foreground="{DynamicResource ThemeForegroundBrush}" WindowState="Maximized">
